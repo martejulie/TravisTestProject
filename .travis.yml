@@ -6,7 +6,6 @@ branches:
     - master
 compiler:
   - gcc
-  - clang
 sudo: required
 dist: trusty
 addons:
@@ -16,5 +15,8 @@ addons:
     packages:
       - qtdeclarative5-dev
 script:
+  - sudo apt-get install catch
   - /usr/lib/x86_64-linux-gnu/qt5/bin/qmake
   - make
+  - cd tests
+  - LD_LIBRARY_PATH=../src ./tests
